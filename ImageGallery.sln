@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MArvin.IDP", "MArvin.IDP\MArvin.IDP.csproj", "{83193036-AA42-4FEF-9F24-678BC17F2374}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{6801DFE6-631B-427F-8DA4-DEB196D93AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6801DFE6-631B-427F-8DA4-DEB196D93AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6801DFE6-631B-427F-8DA4-DEB196D93AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83193036-AA42-4FEF-9F24-678BC17F2374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83193036-AA42-4FEF-9F24-678BC17F2374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83193036-AA42-4FEF-9F24-678BC17F2374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83193036-AA42-4FEF-9F24-678BC17F2374}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
