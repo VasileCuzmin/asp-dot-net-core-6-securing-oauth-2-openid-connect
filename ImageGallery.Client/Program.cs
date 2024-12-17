@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
@@ -41,6 +42,9 @@ builder.Services.AddAuthentication(opt =>
         //the application after logging out of IdentityServer
         options.GetClaimsFromUserInfoEndpoint = true;
         options.SaveTokens = true;
+        options.ClaimActions.DeleteClaim("aud");
+        options.ClaimActions.DeleteClaim("sid");
+        options.ClaimActions.DeleteClaim("idp");
     });
 
 var app = builder.Build();
