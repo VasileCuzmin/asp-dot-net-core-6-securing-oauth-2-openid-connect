@@ -37,7 +37,11 @@ public static class Config
                 {
                     new Secret("secret".Sha256())
                 },
-                RequireConsent = true
+                RequireConsent = true,
+                PostLogoutRedirectUris =
+                {
+                    "https://localhost:7184/signout-callback-oidc"
+                }
             }
         };
 }

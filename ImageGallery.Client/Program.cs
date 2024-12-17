@@ -33,6 +33,9 @@ builder.Services.AddAuthentication(opt =>
         //options.Scope.Add("openid"); // these are requested by the middleware by default
         //options.Scope.Add("profile");
         //options.CallbackPath = new PathString("/signin-oidc");//this is used by the middleware by default 
+        //options.SignedOutCallbackPath // default = host:port/signout-callback-oidc.
+        // Must match with the post logout redirect URI at IDP client config if you want to automatically return to
+        //the application after logging out of IdentityServer
         options.SaveTokens = true;
     });
 
