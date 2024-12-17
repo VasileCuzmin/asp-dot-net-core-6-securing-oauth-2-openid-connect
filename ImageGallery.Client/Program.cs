@@ -48,6 +48,12 @@ builder.Services.AddAuthentication(opt =>
 
         options.Scope.Add("roles");
         options.ClaimActions.MapJsonKey("role", "role");
+
+        options.TokenValidationParameters = new()
+        {
+            NameClaimType = "given_name",
+            RoleClaimType = "role"
+        };
     });
 
 var app = builder.Build();
