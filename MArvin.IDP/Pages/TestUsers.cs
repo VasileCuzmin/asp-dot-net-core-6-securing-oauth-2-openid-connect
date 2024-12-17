@@ -32,6 +32,7 @@ public static class TestUsers
                     Password = "password",
                     Claims =
                     {
+                        new Claim("role","FreeUser"),
                         new Claim(JwtClaimTypes.Name, "David Smith"),
                         new Claim(JwtClaimTypes.GivenName, "David"),
                         new Claim(JwtClaimTypes.FamilyName, "Smith"),
@@ -48,6 +49,7 @@ public static class TestUsers
                     Password = "password",
                     Claims =
                     {
+                        new Claim("role","PayingUser"),
                         new Claim(JwtClaimTypes.Name, "Alice Smith"),
                         new Claim(JwtClaimTypes.GivenName, "Alice"),
                         new Claim(JwtClaimTypes.FamilyName, "Smith"),
