@@ -42,7 +42,7 @@ namespace ImageGallery.Client.Controllers
             using (var responseStream = await response.Content.ReadAsStreamAsync())
             {
                 var images = await JsonSerializer.DeserializeAsync<List<Image>>(responseStream);
-                return View(new GalleryIndexViewModel(images ?? new List<Image>()));
+                return View(new GalleryIndexViewModel(images ?? []));
             }
         }
 
