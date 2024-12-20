@@ -27,7 +27,7 @@ public static class TestUsers
             {
                 new TestUser
                 {
-                    SubjectId = Guid.NewGuid().ToString(),
+                    SubjectId = Guid.Parse("d860efca-22d9-47fd-8249-791ba61b07c7").ToString(),
                     Username = "David",
                     Password = "password",
                     Claims =
@@ -44,18 +44,18 @@ public static class TestUsers
                 },
                 new TestUser
                 {
-                    SubjectId = Guid.NewGuid().ToString(),
-                    Username = "Alice",
+                    SubjectId = Guid.Parse("b7539694-97e7-4dfe-84da-b4256e1ff5c7").ToString(),
+                    Username = "Emma",
                     Password = "password",
                     Claims =
                     {
                         new Claim("role","PayingUser"),
-                        new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Alice"),
+                        new Claim(JwtClaimTypes.Name, "Emma Smith"),
+                        new Claim(JwtClaimTypes.GivenName, "Emma"),
                         new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
+                        new Claim(JwtClaimTypes.Email, "EmmaSmith@email.com"),
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
+                        new Claim(JwtClaimTypes.WebSite, "http://emma.com"),
                         new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
                     }
                 }

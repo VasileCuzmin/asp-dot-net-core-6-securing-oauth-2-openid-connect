@@ -20,19 +20,25 @@ namespace ImageGallery.API.Controllers
             IWebHostEnvironment hostingEnvironment,
             IMapper mapper)
         {
-            _galleryRepository = galleryRepository ?? 
+            _galleryRepository = galleryRepository ??
                 throw new ArgumentNullException(nameof(galleryRepository));
-            _hostingEnvironment = hostingEnvironment ?? 
+            _hostingEnvironment = hostingEnvironment ??
                 throw new ArgumentNullException(nameof(hostingEnvironment));
-            _mapper = mapper ?? 
+            _mapper = mapper ??
                 throw new ArgumentNullException(nameof(mapper));
         }
 
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<Image>>> GetImages()
         {
+            var ownerId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            if (ownerId is null)
+            {
+                throw new Exception("User identifier is missing from token");
+            }
+
             // get from repo
-            var imagesFromRepo = await _galleryRepository.GetImagesAsync();
+            var imagesFromRepo = await _galleryRepository.GetImagesAsync(ownerId);
 
             // map to model
             var imagesToReturn = _mapper.Map<IEnumerable<Image>>(imagesFromRepo);
@@ -43,7 +49,7 @@ namespace ImageGallery.API.Controllers
 
         [HttpGet("{id}", Name = "GetImage")]
         public async Task<ActionResult<Image>> GetImage(Guid id)
-        {          
+        {
             var imageFromRepo = await _galleryRepository.GetImageAsync(id);
 
             if (imageFromRepo == null)
@@ -71,7 +77,7 @@ namespace ImageGallery.API.Controllers
 
             // create the filename
             string fileName = Guid.NewGuid().ToString() + ".jpg";
-            
+
             // the full file path
             var filePath = Path.Combine($"{webRootPath}/images/{fileName}");
 
@@ -99,7 +105,7 @@ namespace ImageGallery.API.Controllers
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteImage(Guid id)
-        {            
+        {
             var imageFromRepo = await _galleryRepository.GetImageAsync(id);
 
             if (imageFromRepo == null)
@@ -115,7 +121,7 @@ namespace ImageGallery.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateImage(Guid id, 
+        public async Task<IActionResult> UpdateImage(Guid id,
             [FromBody] ImageForUpdate imageForUpdate)
         {
             var imageFromRepo = await _galleryRepository.GetImageAsync(id);
