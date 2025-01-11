@@ -22,7 +22,7 @@ public static class TestUsers
                 postal_code = "69118",
                 country = "Germany"
             };
-                
+
             return new List<TestUser>
             {
                 new TestUser
@@ -39,6 +39,7 @@ public static class TestUsers
                         new Claim(JwtClaimTypes.Email, "DavidSmith@email.com"),
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                         new Claim(JwtClaimTypes.WebSite, "http://david.com"),
+                        new Claim("country","nl"),
                         new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
                     }
                 },
@@ -56,6 +57,7 @@ public static class TestUsers
                         new Claim(JwtClaimTypes.Email, "EmmaSmith@email.com"),
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                         new Claim(JwtClaimTypes.WebSite, "http://emma.com"),
+                        new Claim("country","be"),
                         new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
                     }
                 }

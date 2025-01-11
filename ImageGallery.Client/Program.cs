@@ -53,7 +53,10 @@ builder.Services.AddAuthentication(opt =>
 
         options.Scope.Add("roles");
         options.Scope.Add("imagegalleryapi.fullaccess");
+        options.Scope.Add("country");
+
         options.ClaimActions.MapJsonKey("role", "role");
+        options.ClaimActions.MapUniqueJsonKey("country", "country");
 
         options.TokenValidationParameters = new()
         {
