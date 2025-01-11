@@ -1,5 +1,6 @@
 using ImageGallery.API.DbContexts;
 using ImageGallery.API.Services;
+using ImageGallery.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.JsonWebTokens;
@@ -38,6 +39,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidTypes = ["at+jwt"]
         };
     });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanAddImage", AuthorizationPolicies.CanAddImage());
+});
 
 var app = builder.Build();
 
