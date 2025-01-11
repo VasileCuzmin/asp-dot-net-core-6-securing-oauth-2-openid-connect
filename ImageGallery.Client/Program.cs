@@ -1,3 +1,4 @@
+using ImageGallery.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -64,6 +65,11 @@ builder.Services.AddAuthentication(opt =>
             RoleClaimType = "role"
         };
     });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanAddImage", AuthorizationPolicies.CanAddImage());
+});
 
 var app = builder.Build();
 
